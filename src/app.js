@@ -4,6 +4,8 @@ const age = document.querySelectorAll("#age");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const pageNo = document.getElementById("showing");
+const table = document.querySelector("table");
+const loading = document.querySelector("h3");
 
 let isPage = true;
 let url = `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84`;
@@ -14,6 +16,10 @@ let page = 1;
 console.log(number);
 
 const startApp = async () => {
+  // table.textContent = "Loading...";
+  // loading.classList.add("add");
+  loading.classList.add("remove");
+
   const res = await fetch(url);
   const data = await res.json();
 
@@ -38,6 +44,8 @@ const startApp = async () => {
       }
     }
 
+    loading.classList.add("remove");
+
     if (page === 1) {
       prevBtn.classList.add("remove");
     }
@@ -58,6 +66,9 @@ const startApp = async () => {
 
 const prevPage = async () => {
   page = page - 1;
+
+  loading.classList.add("add");
+  table.classList.add("remove");
 
   if (page !== 2) {
     url = prevUrl;
@@ -99,6 +110,9 @@ const prevPage = async () => {
     prevUrl = result.paging.previous;
   });
 
+  loading.classList.remove("add");
+  table.classList.remove("remove");
+
   pageNo.textContent = `Showing Page ${page}`;
 
   if (page === 1) {
@@ -109,6 +123,9 @@ const prevPage = async () => {
 const nextPage = async (e) => {
   // url = nextUrl;
   page++;
+
+  loading.classList.add("add");
+  table.classList.add("remove");
 
   if (page === 3) {
     url = nextUrl;
@@ -153,6 +170,9 @@ const nextPage = async (e) => {
   if (page === 4) {
     nextBtn.classList.add("remove");
   }
+
+  loading.classList.remove("add");
+  table.classList.remove("remove");
 
   console.log(url);
 };

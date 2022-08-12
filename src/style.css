@@ -92,3 +92,7 @@ tbody tr:nth-child(even) {
 .remove {
   display: none;
 }
+
+.add {
+  display: table;
+}
