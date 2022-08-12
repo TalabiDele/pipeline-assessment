@@ -37,6 +37,18 @@ const startApp = async () => {
       }
     }
 
+    if (page === 1) {
+      prevBtn.classList.add("remove");
+    }
+
+    if (page > 1) {
+      prevBtn.classList.remove("remove");
+    }
+
+    if (page < 4) {
+      nextBtn.classList.remove("remove");
+    }
+
     nextUrl = result.paging.next;
   });
 };
@@ -72,9 +84,21 @@ const prevPage = async () => {
       }
     }
 
+    if (page < 4) {
+      nextBtn.classList.remove("remove");
+    }
+
+    if (page === 1) {
+      prevBtn.classList.add("remove");
+    }
+
     nextUrl = result.paging.next;
     prevUrl = result.paging.previous;
   });
+
+  if (page === 1) {
+    startApp();
+  }
 };
 
 const nextPage = async (e) => {
@@ -114,6 +138,14 @@ const nextPage = async (e) => {
     nextUrl = result.paging.next;
     prevUrl = result.paging.previous;
   });
+
+  if (page > 1) {
+    prevBtn.classList.remove("remove");
+  }
+
+  if (page === 4) {
+    nextBtn.classList.add("remove");
+  }
 
   console.log(url);
 };
