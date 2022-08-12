@@ -13,22 +13,14 @@ let nextUrl;
 let prevUrl;
 let page = 1;
 
-console.log(number);
-
 const startApp = async () => {
-  // table.textContent = "Loading...";
-  // loading.classList.add("add");
   loading.classList.add("add");
   table.classList.add("remove");
 
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
-
   data.results.forEach((result) => {
-    console.log(result[1]);
-
     let outcome = result[page];
 
     for (var i = 0; i < outcome.length; i++) {
@@ -78,12 +70,8 @@ const prevPage = async () => {
     url = prevUrl;
   }
 
-  console.log(page);
-
   const res = await fetch(url);
   const data = await res.json();
-
-  console.log(data);
 
   data.results.forEach((result) => {
     let outcome = result[page];
@@ -138,11 +126,7 @@ const nextPage = async (e) => {
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
-
   data.results.forEach((result) => {
-    console.log(result);
-
     let outcome = result[page];
 
     for (var i = 0; i < outcome.length; i++) {
@@ -177,8 +161,6 @@ const nextPage = async (e) => {
 
   loading.classList.remove("add");
   table.classList.remove("remove");
-
-  console.log(url);
 };
 
 nextBtn.addEventListener("click", nextPage);
