@@ -4,7 +4,7 @@ const age = document.querySelectorAll("#age");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const pageNo = document.getElementById("showing");
-const table = document.querySelector("table");
+const table = document.querySelector("tbody");
 const loading = document.querySelector("h3");
 
 let isPage = true;
