@@ -18,7 +18,8 @@ console.log(number);
 const startApp = async () => {
   // table.textContent = "Loading...";
   // loading.classList.add("add");
-  loading.classList.add("remove");
+  loading.classList.add("add");
+  table.classList.add("remove");
 
   const res = await fetch(url);
   const data = await res.json();
@@ -57,6 +58,9 @@ const startApp = async () => {
     if (page < 4) {
       nextBtn.classList.remove("remove");
     }
+
+    loading.classList.remove("add");
+    table.classList.remove("remove");
 
     nextUrl = result.paging.next;
 
