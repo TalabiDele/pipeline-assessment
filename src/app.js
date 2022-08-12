@@ -3,6 +3,7 @@ const gender = document.querySelectorAll("#gender");
 const age = document.querySelectorAll("#age");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+const pageNo = document.getElementById("showing");
 
 let isPage = true;
 let url = `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84`;
@@ -50,6 +51,8 @@ const startApp = async () => {
     }
 
     nextUrl = result.paging.next;
+
+    pageNo.textContent = `Showing Page ${page}`;
   });
 };
 
@@ -96,6 +99,8 @@ const prevPage = async () => {
     prevUrl = result.paging.previous;
   });
 
+  pageNo.textContent = `Showing Page ${page}`;
+
   if (page === 1) {
     startApp();
   }
@@ -138,6 +143,8 @@ const nextPage = async (e) => {
     nextUrl = result.paging.next;
     prevUrl = result.paging.previous;
   });
+
+  pageNo.textContent = `Showing Page ${page}`;
 
   if (page > 1) {
     prevBtn.classList.remove("remove");
