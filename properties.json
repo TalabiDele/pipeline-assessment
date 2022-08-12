@@ -3,6 +3,6 @@
   "track": "frontend",
   "email": "talabibamidele7@gmail.com",
   "githubUsername": "TalabiDele",
-  "deployedAppURL": "https://paginationpipelineapp.netlify.app",
+  "deployedAppURL": "paginationpipelineapp.netlify.app",
   "explainer": "An app for viewing data in different pages with pagination functionality added."
 }
