@@ -25,17 +25,14 @@ const startApp = async () => {
 
     for (var i = 0; i < outcome.length; i++) {
       for (var i = 0; i < number.length; i++) {
-        // outcome.push(number[i].textContent);
         number[i].textContent = outcome[i].row;
       }
 
       for (var i = 0; i < gender.length; i++) {
-        // outcome.push(number[i].textContent);
         gender[i].textContent = outcome[i].gender;
       }
 
       for (var i = 0; i < age.length; i++) {
-        // outcome.push(number[i].textContent);
         age[i].textContent = outcome[i].age;
       }
     }
@@ -45,10 +42,11 @@ const startApp = async () => {
 };
 
 const prevPage = async () => {
-  page--;
+  page = page - 1;
 
-  // if (page === 3) {
-  url = prevUrl;
+  if (page !== 2) {
+    url = prevUrl;
+  }
 
   console.log(page);
 
@@ -58,29 +56,24 @@ const prevPage = async () => {
   console.log(data);
 
   data.results.forEach((result) => {
-    // console.log(result[1]);
-
     let outcome = result[page];
 
     for (var i = 0; i < outcome.length; i++) {
       for (var i = 0; i < number.length; i++) {
-        // outcome.push(number[i].textContent);
         number[i].textContent = outcome[i].row;
       }
 
       for (var i = 0; i < gender.length; i++) {
-        // outcome.push(number[i].textContent);
         gender[i].textContent = outcome[i].gender;
       }
 
       for (var i = 0; i < age.length; i++) {
-        // outcome.push(number[i].textContent);
         age[i].textContent = outcome[i].age;
       }
     }
 
     nextUrl = result.paging.next;
-    // prevUrl = result.paging.previous;
+    prevUrl = result.paging.previous;
   });
 };
 
@@ -92,32 +85,18 @@ const nextPage = async (e) => {
     url = nextUrl;
   }
 
-  // if (page === 1 || page === 3) {
-  //   page++;
-
-  //   console.log(page);
-  // }
-
-  // if (page === 2) {
-  //   url = nextUrl;
-
-  //   console.log(page);
-  // }
-
   const res = await fetch(url);
   const data = await res.json();
 
   console.log(data);
 
   data.results.forEach((result) => {
-    // console.log(result[1]);
     console.log(result);
 
     let outcome = result[page];
 
     for (var i = 0; i < outcome.length; i++) {
       for (var i = 0; i < number.length; i++) {
-        // outcome.push(number[i].textContent);
         number[i].textContent = outcome[i].row;
       }
 
